@@ -1,2 +1,2 @@
 # redPocketModule
-SpringBoot,SpringCloud,GateWay,Eureka,Redisson,MicroService
+SpringBoot，SpringCloud，RabbitMQ，Mysql，Redis，OpenFeign，Gateway，Eureka、Redisson
