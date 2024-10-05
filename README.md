@@ -19,3 +19,94 @@
 声明式的Web服务客户端，它使得编写Web服务客户端变得更加容易。使用Feign，只需要创建一个接口并注解。在运行时，Feign会为这个接口创建一个代理对象。当你调用这个接口的方法时，Feign会帮你发起HTTP请求，并根据响应返回结果。这样，你只需要关注接口的定义和业务逻辑，而不需要关心底层的HTTP通信细节。
 ## 分布式锁
 通过Redisson封装的分布式锁功能创建，RabbitMQ消息消费者接收到消息时尝试获取锁，获取到红包锁之后再进行其他的数据处理。
+### LockUti 分布式锁工具类
+```java
+public class LockUtil {
+
+    private static final RedissonClient redisson = RedissonConfig.getRedisson();
+    private static final String LOCK_KEY_PREFIX = "lock_";
+
+    public static boolean lock(String lockKey) throws InterruptedException {
+        String key = LOCK_KEY_PREFIX + lockKey;
+        RLock lock = redisson.getLock(key);
+
+        boolean tryLock = lock.tryLock(30, TimeUnit.SECONDS);
+        return tryLock;
+
+    }
+
+    public static boolean isMyLock(String lockKey) {
+        String key = LOCK_KEY_PREFIX + lockKey;
+        RLock lock = redisson.getLock(key);
+        return lock.isHeldByCurrentThread();
+    }
+
+    public static void unlock(String lockKey) {
+        String key = LOCK_KEY_PREFIX + lockKey;
+        RLock lock = redisson.getLock(key);
+        lock.unlock();
+    }
+}
+```
+### 抢红包后端业务逻辑
+```java
+@Component
+@RabbitListener(queues = GainRedPocketConfig.GAIN_INSTANT_RED_POCKET_QUEUE)
+public class GainRedPocketConsumer {
+
+    @RabbitHandler
+    public void receive(Map message) throws InterruptedException {
+        RedPocket redPocket = (RedPocket) message.get("RedPocket");
+        int uid = (int) message.get("uid");
+        boolean lockRedPocket = LockUtil.lock(redPocket.getUuid());
+
+        while (!lockRedPocket) {
+            Thread.sleep(50);
+            lockRedPocket = LockUtil.lock(redPocket.getUuid());
+        }
+
+        String redPocketJson = JedisUtil.hget("red_pockets", redPocket.getUuid());
+        RedPocket redPocketObject = JSON.parseObject(redPocketJson, RedPocket.class);
+
+        try{
+            if(redPocketObject.getPocketMoney()>0&&redPocketObject.getRestPocketCount()>0){
+                boolean lock = LockUtil.lock(String.valueOf(uid));
+                while (!lock) {
+                    Thread.sleep(50);
+                    lock = LockUtil.lock(String.valueOf(uid));
+                }
+                double pocketMoney = redPocketObject.getPocketMoney();
+                if(redPocketObject.getRedPocketType().equals("random")){
+                    if(redPocketObject.getRestPocketCount()==1){
+                        double gainMoney = pocketMoney;
+                        redPocketObject.setPocketMoney(0);
+                        redPocketObject.setRestPocketCount(0);
+                        String balance = JedisUtil.hget("accouts", String.valueOf(uid));
+                        JedisUtil.hset("accouts", String.valueOf(uid), String.valueOf(Double.parseDouble(balance)+gainMoney));
+                        JedisUtil.hset("red_pockets", redPocket.getUuid(), JSON.toJSONString(redPocketObject));
+                        System.out.println("最后一个红包被抢完啦");
+
+                    }else if(redPocketObject.getRestPocketCount()>1){
+                        double gainMoney = RandomUtil.getRandomDouble(pocketMoney);
+                        redPocketObject.setPocketMoney(pocketMoney-gainMoney);
+                        redPocketObject.setRestPocketCount(redPocketObject.getRestPocketCount()-1);
+                        String balance = JedisUtil.hget("accouts", String.valueOf(uid));
+                        JedisUtil.hset("accouts", String.valueOf(uid), String.valueOf(Double.parseDouble(balance)+gainMoney));
+                        JedisUtil.hset("red_pockets", redPocket.getUuid(), JSON.toJSONString(redPocketObject));
+                        System.out.println("uid为" +uid+ "的用户抢到了红包，数额为" +gainMoney);
+                    }
+                }
+            }else{
+                System.out.println("红包已经没有了");
+            }
+        }finally {
+            if(LockUtil.isMyLock(redPocket.getUuid())){
+                LockUtil.unlock(redPocket.getUuid());
+            }
+            if(LockUtil.isMyLock(String.valueOf(uid))){
+                LockUtil.unlock(String.valueOf(uid));
+            }
+        }
+    }
+}
+```
