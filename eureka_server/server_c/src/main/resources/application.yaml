@@ -1,0 +1,18 @@
+server:
+  port: 3003
+
+eureka:
+  instance:
+    hostname: esc
+    prefer-ip-address: true
+  client:
+#    enabled: false
+    fetch-registry: false
+    service-url:
+      defaultZone:
+        http://esa:3001/eureka,
+        http://esb:3002/eureka
+    register-with-eureka: false
+spring:
+  application:
+    name: server_c

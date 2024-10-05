@@ -1,0 +1,11 @@
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: asakumo
+    password: lemon
+    virtual-host: /asakumo
+  application:
+    name: rmq_test
+server:
+  port: 3100

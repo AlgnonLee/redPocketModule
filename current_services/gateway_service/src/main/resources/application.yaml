@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: gateway_service
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+server:
+  port: 3500
+eureka:
+  instance:
+    instance-id: gateway_service
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone:
+        http://esa:3001/eureka
+        ,http://esb:3002/eureka,http://esc:3003/eureka

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/current_services/account_service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/current_services/account_service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/current_services/gateway_service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/current_services/gateway_service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/current_services/mq_consumer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/current_services/mq_consumer/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/current_services/mq_provider/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/current_services/mq_provider/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/current_services/red_pocket_service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/current_services/red_pocket_service/src/main/java/org/ms_demo/controller/RedPocketController.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/current_services/red_pocket_service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/current_services/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/current_services/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/current_services/user_service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/current_services/user_service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka_server/eureka_server_a/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka_server/eureka_server_a/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka_server/eureka_server_b/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka_server/eureka_server_b/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka_server/server_a/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka_server/server_a/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka_server/server_b/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka_server/server_b/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka_server/server_c/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka_server/server_c/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka_server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka_server/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka_service_a/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka_service_a/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test_modules/CLIENT_CONSUMER/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test_modules/CLIENT_CONSUMER/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test_modules/ClientProvider/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test_modules/ClientProvider/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test_modules/TEST_EUREKA/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test_modules/TEST_EUREKA/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test_modules/rabbitmq_consumer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test_modules/rabbitmq_consumer/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test_modules/rabbitmq_producer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test_modules/rabbitmq_producer/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test_modules/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test_modules/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test_modules/test_ms_a/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test_modules/test_ms_a/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test_modules/test_watcher/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test_modules/test_watcher/src/main/resources" charset="UTF-8" />
+  </component>
+</project>

@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: test_ms_a
+eureka:
+  client:
+    service-url:
+      defaultZone:
+        http://esa:3001/eureka,http://esb:3002/eureka,http://esc:3003/eureka
+#    fetch-registry: false
+#    register-with-eureka: false
+  instance:
+    instance-id: test_ms_a
+    prefer-ip-address: true
+server:
+  port: 3201

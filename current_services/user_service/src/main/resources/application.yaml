@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: user-service
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: bz1746578697
+    url: jdbc:mysql://localhost:3306/current_services_ds?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+eureka:
+  instance:
+    instance-id: user-service-${server.port}
+  client:
+    service-url:
+      defaultZone:
+        http://esa:3001/eureka
+#        ,http://esb:3002/eureka,http://esc:3003/eureka

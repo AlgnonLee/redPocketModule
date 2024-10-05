@@ -1,0 +1,30 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.ms_demo</groupId>
+  <artifactId>structure</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <name>structure</name>
+  <url>http://maven.apache.org</url>
+  <modules>
+    <module>eureka_server</module>
+      <module>test_modules</module>
+    <module>test_modules/rabbitmq_producer</module>
+      <module>test_modules/rabbitmq_consumer</module>
+      <module>test_modules/test_ms_a</module>
+      <module>current_services</module>
+      <module>test_modules/test_watcher</module>
+      <module>current_services/mq_provider</module>
+      <module>current_services/gateway_service</module>
+      <module>test_modules/CLIENT_CONSUMER</module>
+  </modules>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+
+</project>
